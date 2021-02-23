@@ -1,14 +1,11 @@
+import 'reflect-metadata'
 import express from 'express';
+import './database'
+import { router } from './routes';
+
 const app = express();
 
-// Get -> Buscar informacoes
-app.get("/", (req, res) => {
-    return res.json({ message: "Hello World (GET)" })
-})
+app.use(express.json());
+app.use(router);
 
-// Post -> Alterar informacoes
-app.post("/", (req, res) => {
-    return res.json({ message: "This is a POST" })
-})
-
-app.listen(3000, () => console.log("Server rodando!!"))
+app.listen(3000, () => console.log("Server rodando!!"));
